@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="本书设计的目的是帮助你高效使用Java程序语言和基本类库：java.lang，java.util，java.io这些包以及它们的子包，比如java.util.concurrent并发包和java.util.function函数式包，其他的类库讨论次数太多了。">
-<meta name="keywords" content="effective,java,introduction">
+  <meta name="description" content="Item 4: Enforce noninstantiability with a private constructor第4条：利用私有构造方法强制类不能被实例">
+<meta name="keywords" content="effective,java,constrauctor,noninstantiability">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Effective Java 3rd Edition》第1章-简介">
-<meta property="og:url" content="http://yoursite.com/2018/05/07/《Effective Java 3rd Edition》第1章-简介/index.html">
+<meta property="og:title" content="《Effective Java 3rd Edition》第2章-第4条：利用私有构造方法强制类不能被实例">
+<meta property="og:url" content="http://yoursite.com/2018/05/23/《Effective Java 3rd Edition》第2章-第4条 用私有构造方法使类不能实例化/index.html">
 <meta property="og:site_name" content="空白小站">
-<meta property="og:description" content="本书设计的目的是帮助你高效使用Java程序语言和基本类库：java.lang，java.util，java.io这些包以及它们的子包，比如java.util.concurrent并发包和java.util.function函数式包，其他的类库讨论次数太多了。">
+<meta property="og:description" content="Item 4: Enforce noninstantiability with a private constructor第4条：利用私有构造方法强制类不能被实例">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-14T02:09:14.193Z">
+<meta property="og:updated_time" content="2018-05-23T08:32:29.794Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《Effective Java 3rd Edition》第1章-简介">
-<meta name="twitter:description" content="本书设计的目的是帮助你高效使用Java程序语言和基本类库：java.lang，java.util，java.io这些包以及它们的子包，比如java.util.concurrent并发包和java.util.function函数式包，其他的类库讨论次数太多了。">
+<meta name="twitter:title" content="《Effective Java 3rd Edition》第2章-第4条：利用私有构造方法强制类不能被实例">
+<meta name="twitter:description" content="Item 4: Enforce noninstantiability with a private constructor第4条：利用私有构造方法强制类不能被实例">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/07/《Effective Java 3rd Edition》第1章-简介/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/23/《Effective Java 3rd Edition》第2章-第4条 用私有构造方法使类不能实例化/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>《Effective Java 3rd Edition》第1章-简介 | 空白小站</title>
+  <title>《Effective Java 3rd Edition》第2章-第4条：利用私有构造方法强制类不能被实例 | 空白小站</title>
   
 
 
@@ -278,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/07/《Effective Java 3rd Edition》第1章-简介/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/《Effective Java 3rd Edition》第2章-第4条 用私有构造方法使类不能实例化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="blanker">
@@ -295,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《Effective Java 3rd Edition》第1章-简介
+          <h1 class="post-title" itemprop="name headline">《Effective Java 3rd Edition》第2章-第4条：利用私有构造方法强制类不能被实例
               
             
           </h1>
@@ -320,24 +320,12 @@
                 
               
 
-              <time title="创建时间：2018-05-07 21:08:01" itemprop="dateCreated datePublished" datetime="2018-05-07T21:08:01+08:00">2018-05-07</time>
+              <time title="创建时间：2018-05-23 16:33:01 / 修改时间：16:32:29" itemprop="dateCreated datePublished" datetime="2018-05-23T16:33:01+08:00">2018-05-23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-14 10:09:14" itemprop="dateModified" datetime="2018-05-14T10:09:14+08:00">2018-05-14</time>
               
             
           </span>
@@ -388,121 +376,28 @@
       
 
       
-        <p>本书设计的目的是帮助你高效使用Java程序语言和基本类库：java.lang，java.util，java.io这些包以及它们的子包，比如java.util.concurrent并发包和java.util.function函数式包，其他的类库讨论次数太多了。</p>
-<a id="more"></a>
-<p>本书包含90个条目，每个条目描述一个规则，最优秀和最有经验的程序员普遍认为，寻求规则的实践活动是非常有益的。这些规则松散地分布于11个章节中，每个章节涵盖一个软件设计的的主题。本书并不要求从头到尾阅读：每个条目或多或少都是独立成篇的。条目之间存在大量的相互引用，因此你可以很轻松地规划你的学习旅程。</p>
-<p>本书上一版本发布以来，JDK平台添加了很多新的特性，本书绝大部分的条目以某种方式使用了这些特性。下表展示了关键特性主要覆盖范围所处的条目：</p>
-<table>
-<thead>
-<tr>
-<th>特性</th>
-<th>条目</th>
-<th>JDK版本</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Lambdas</td>
-<td>第42-44条</td>
-<td>Java 8</td>
-</tr>
-<tr>
-<td>Streams</td>
-<td>第45-48条</td>
-<td>Java 8</td>
-</tr>
-<tr>
-<td>Optionals</td>
-<td>第55条</td>
-<td>Java 8</td>
-</tr>
-<tr>
-<td>Default method In interfaces</td>
-<td>第21条</td>
-<td>Java 8</td>
-</tr>
-<tr>
-<td>try-with-resources</td>
-<td>第9条</td>
-<td>Java 7</td>
-</tr>
-<tr>
-<td>@SafeVarargs</td>
-<td>第32条</td>
-<td>Java 7</td>
-</tr>
-<tr>
-<td>Modules</td>
-<td>第15条</td>
-<td>Java 9</td>
-</tr>
-</tbody>
-</table>
-<p>绝大部分的条目通过程序样例进行展现，样例代码展示了很多设计模式和惯用做法，是本书一大特点，在适当的情况下，它们会和相同工作领域的标准[Gamma95]交叉引用。</p>
-<p>很多条目中包含一个或者更多程序样例来展示那些应该避免出现的实践，这些样例，有时被称为反模式，会明确使用以下注释进行标记<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 绝不要这样做！</span></span><br></pre></td></tr></table></figure></p>
-<p>对于每个这样的例子，条目中会解释为什么这样做比较糟糕，并且会给出替代方案的建议。</p>
-<p>本书不适合初学者：它假设你已经习惯了Java。如果不是，请考虑许多优秀的介绍性文本之一，比如Peter Sestoft的《Java Precisely》[Sestoft16]。虽然《Effective Java》对任何有编程语言工作知识的人都可访问，但它应该是为高级程序员提供思考的养料。</p>
-<p>本书的大多数规则都源于几个基本原则。清晰和简单是最重要的。使用组件的用户不应该对它的行为感到惊讶。组件应该尽可能小，但不能太小（本书中所用的属于“组件(component)”，指的是任何可重用的软件元素，从单个方法到由多个包组成的复杂框架）。应该重用代码，而不是复制代码。组件之间的依赖应保持在最低限度。错误应在刚出现后就尽可能早地被检测到，理想情况下，在编译时就检测到。</p>
-<p>虽然本书中的规则不适用于100%的时间，但在大多数情况下，它们确实描述了最佳编程实践。你不应该盲目遵守这些规则，但可以偶尔违反这些规则，只要有好的理由。学习编程的艺术，就像大多数其他学科一样，包括先学习规则，然后学习合适打破规则。</p>
-<p>在大多数情况下，本书并不是关于性能，而是关于编写清晰、正确、可用，健壮、灵活和可维护的程序。如果你能做到这些，通常要获取所需的性能是一个相对简单的问题（第67条）。有些条目会讨论性能问题，其中一些条目会提供性能数字。这些数字，加上了短语“在我的机器上”，充其量只能算是近似的。</p>
-<p>不管它的价值如何，我的机器是一台老化的国产3.5GHz四核英特尔i7-447K，内存是16G的DDR3-1866 CL9，在微软Windows 7 专业版SP1（64位）上运行，OpenJDK发行版是Azul’s Zulu 9.0.0.15。</p>
-<p>在讨论Java编程语言特性和类库的时候，有时候需要指定特定的发行版，为方便起见，本书使用昵称而不是官方发布版本名称。下表展示了发行版名称和昵称之间的对应关系：</p>
-<table>
-<thead>
-<tr>
-<th>官方发行版名称</th>
-<th>昵称</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>JDK 1.0.x</td>
-<td>Java 1.0</td>
-</tr>
-<tr>
-<td>JDK 1.1.x</td>
-<td>Java 1.1</td>
-</tr>
-<tr>
-<td>Java 2 Platform, Standard Edition, v1.2</td>
-<td>Java 2</td>
-</tr>
-<tr>
-<td>Java 2 Platform, Standard Edition, v1.3</td>
-<td>Java 3</td>
-</tr>
-<tr>
-<td>Java 2 Platform, Standard Edition, v1.4</td>
-<td>Java 4</td>
-</tr>
-<tr>
-<td>Java 2 Platform, Standard Edition, v5.0</td>
-<td>Java 5</td>
-</tr>
-<tr>
-<td>Java Platform, Standard 6</td>
-<td>Java 6</td>
-</tr>
-<tr>
-<td>Java Platform, Standard 7</td>
-<td>Java 7</td>
-</tr>
-<tr>
-<td>Java Platform, Standard 8</td>
-<td>Java 8</td>
-</tr>
-<tr>
-<td>Java Platform, Standard 9</td>
-<td>Java 9</td>
-</tr>
-</tbody>
-</table>
-<p>这些样例是相当完整的，但更倾向于可读性而不是完整性。它们可以自由地使用java.util和java.io包中的类。为了编译示例，你可能需要添加一个或更多的导入声明，或者类似的样板代码。本书网址： <a href="http://joshbloch.com/effectivejava" target="_blank" rel="noopener">http://joshbloch.com/effectivejava</a> ，包含了每个样例代码的扩展版本，你可以编译运行它们。</p>
-<p>对于绝大部分内容，本书使用的技术术语和《Java虚拟机规范，Java SE第8版》[JLS]中的定义是一样的。有一些术语应该特别关注。Java语言支持4种类型：接口（包括注解）、类（包括枚举）、数组和原生类型，前三种被称为应用类型。类的实例和数组是对象；原生类型的值不是对象。类的成员包含字段、方法、成员类和成员接口。方法的签名包含方法名和形式参数的类型；方法签名并不包含方法的返回值类型。</p>
-<p>本书使用的一些术语和《Java语言规范》有所不同。和《Java语言规范》不同的是，本书使用“继承(inheritance)”作为“子类化(subclassing)”的同义词；本书简单地描述一个类“实现(implements)”接口或者一个接口“继承(extends)”另一个接口，而没有使用术语“继承(inheritance)”。为了描述未指定的访问级别，本书使用了传统的“包-私有(package-private)”，而不是技术正确的“包访问级别(package access)”[JLS,6.6.1]。</p>
-<p>本书使用的一些技术术语在《Java语言规范》中没有定义，术语“导出API”，或者称为“简单API”，指的是程序员借以访问一个类、接口或者包所涉及到的类、接口、构造方法、成员以及序列化形式。（术语“API”，是“Application programming interface”的简写形式，比另一个优选的属于“interface”更应该优选使用，以避免与该名称的语言接口相混淆。）通过编码使用API的程序员，称为API用户。其实现使用API的类，称为API的客户端。</p>
-<p>类、接口、构造方法、成员和序列化形式统称为API元素，导出的API由定义API的包外部可访问的API元素组成，这些API元素是任何客户端可以使用并且由提交API的作者所支持的。并非巧合的是，它们也是javadoc生成程序为其默认操作模式生成文档的元素。简单点说，包的导出API由包中每个public修饰的类或接口中的public和protected修饰的成员和构造方法组成。</p>
-<p>在Java 9中，平台加入了模块系统。如果一个库使用了模块系统，它的导出API就是库的模块声明中导出的所有包的导出API的合集。</p>
+        <h1 id="Item-4-Enforce-noninstantiability-with-a-private-constructor"><a href="#Item-4-Enforce-noninstantiability-with-a-private-constructor" class="headerlink" title="Item 4: Enforce noninstantiability with a private constructor"></a>Item 4: Enforce noninstantiability with a private constructor</h1><h1 id="第4条：利用私有构造方法强制类不能被实例"><a href="#第4条：利用私有构造方法强制类不能被实例" class="headerlink" title="第4条：利用私有构造方法强制类不能被实例"></a>第4条：利用私有构造方法强制类不能被实例</h1><a id="more"></a>
+<blockquote>
+<p>Occasionally you’ll want to write a class that is just a grouping of static methods and static fields. Such classes have acquired a bad reputation because some people abuse them to avoid thinking in terms of objects, but they do have valid uses. They can be used to group related methods on primitive values or arrays, in the manner of java.lang.Math or java.util.Arrays. They can also be used to group static methods, including factories (Item 1), for objects that implement some interface, in the manner of java.util.Collections. (As of Java 8, you can also put such methods in the interface, assuming it’s yours to modify.) Lastly, such classes can be used to group methods on a final class, since you can’t put them in a subclass.</p>
+</blockquote>
+<p>有时候你想编写这样一个类，仅仅包含一组静态方法和静态字段。这样的类名声不佳，源于部分人对它们的滥用，导致没有以对象的方式进行思考，但它们确实有合理的用途。这种类可以用来组合对原生类型或数组类型的相关方法，就像java.lang.Math或java.util.Arrays；它们还可以用来组合静态方法，包括静态工厂方法（第1条），专门针对实现了某些接口的对象，就像java.util.Collections这样的类。（在Java8里，假定这些类是你的，可以修改，你还可以把这些方法写在接口中。）最后一点，这样的类还可以用来把方法组合到一个final修饰的类里，因为你不能把它们放在子类里。</p>
+<blockquote>
+<p>   Such utility classes were not designed to be instantiated: an instance would be nonsensical. In the absence of explicit constructors, however, the compiler provides a public, parameterless default constructor. To a user, this constructor is indistinguishable from any other. It is not uncommon to see unintentionally instantiable classes in published APIs.</p>
+</blockquote>
+<p>这种辅助类被设计成不可实例化的：它们的实例没有意义。然而，假如缺少显式的构造方法，编译器会提供一个public修饰无参的默认构造方法，对于用户来说，这样的构造方法不能和任何其他构造方法区分开来，在已发布的API中，无意识地实例化类的情况并不罕见。</p>
+<blockquote>
+<p>   Attempting to enforce noninstantiability by making a class abstract does not work. The class can be subclassed and the subclass instantiated. Furthermore, it misleads the user into thinking the class was designed for inheritance (Item 19). There is, however, a simple idiom to ensure noninstantiability. A default constructor is generated only if a class contains no explicit constructors, so a class can be made noninstantiable by including a private constructor:</p>
+</blockquote>
+<p>试图通过编写一个抽象类来强制使类不能被实例化的做法是行不通的。抽象类可以有子类，而子类能够被实例化。另外，抽象类会误导用户认为该类这样设计的目的是被继承使用（第19条）。然而，有一个简单的惯用做法来确保类不能被实例化，由于只有在没有显式构造方法的时候，编译器才会为类生成默认构造方法，因此在类里包含一个私有的构造方法，类就不能被实例化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Noninstantiable utility class</span></span><br><span class="line"><span class="comment">// 不能实例化的辅助类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UtilityClass</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Suppress default constructor for noninstantiability</span></span><br><span class="line">    <span class="comment">// 抑制默认构造方法，使类不能实例化</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">UtilityClass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError();</span><br><span class="line">    &#125;</span><br><span class="line">    ... <span class="comment">// Remainder omitted</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>   Because the explicit constructor is private, it is inaccessible outside the class. The AssertionError isn’t strictly required, but it provides insurance in case the constructor is accidentally invoked from within the class. It guarantees the class will never be instantiated under any circumstances. This idiom is mildly counterintuitive because the constructor is provided expressly so that it cannot be invoked. It is therefore wise to include a comment, as shown earlier.</p>
+</blockquote>
+<p>因为显式声明的构造方法是私有的，所以在类的外部不能访问。该方法中并不是严格要求需要抛出AssertionError异常，不过这样做为防止从类的内部意外调用构造方法提供了保障，这样就确保了在任何情况下，类都不能被实例化。这种惯用做法有点违反直觉，因为明确提供构造方法专门用于不能被调用，所以比较明智的做法是包含一些注释来说明情况，如前述代码所示。</p>
+<blockquote>
+<p>   As a side effect, this idiom also prevents the class from being subclassed. All constructors must invoke a superclass constructor, explicitly or implicitly, and a subclass would have no accessible superclass constructor to invoke.</p>
+</blockquote>
+<p>这种做法有一个副作用，该类不能被子类继承使用。因为所有子类构造方法都必须显式或隐式地调用父类的构造方法，而该类的子类却不能访问父类的构造方法。</p>
 
       
     </div>
@@ -527,7 +422,9 @@
           
             <a href="/tags/java/" rel="tag"># java</a>
           
-            <a href="/tags/introduction/" rel="tag"># introduction</a>
+            <a href="/tags/constrauctor/" rel="tag"># constrauctor</a>
+          
+            <a href="/tags/noninstantiability/" rel="tag"># noninstantiability</a>
           
         </div>
       
@@ -540,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/07/开始学习并试着翻译《Effective-Java-3rd-Edition》/" rel="next" title="开始学习并试着翻译《Effective Java 3rd Edition》">
-                <i class="fa fa-chevron-left"></i> 开始学习并试着翻译《Effective Java 3rd Edition》
+              <a href="/2018/05/21/《Effective Java 3rd Edition》第2章-第3条 使用私有构造方法或枚举类型强制实现单例属性/" rel="next" title="《Effective Java 3rd Edition》第2章-第3条 使用私有构造方法或枚举类型强制实现单例属性">
+                <i class="fa fa-chevron-left"></i> 《Effective Java 3rd Edition》第2章-第3条 使用私有构造方法或枚举类型强制实现单例属性
               </a>
             
           </div>
@@ -549,10 +446,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/13/《Effective Java 3rd Edition》第2章-第1条 考虑使用静态工厂方法代替构造方法/" rel="prev" title="《Effective Java 3rd Edition》第2章-第1条 考虑使用静态工厂方法代替构造方法">
-                《Effective Java 3rd Edition》第2章-第1条 考虑使用静态工厂方法代替构造方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -601,8 +494,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -685,6 +587,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Item-4-Enforce-noninstantiability-with-a-private-constructor"><span class="nav-number">1.</span> <span class="nav-text">Item 4: Enforce noninstantiability with a private constructor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第4条：利用私有构造方法强制类不能被实例"><span class="nav-number">2.</span> <span class="nav-text">第4条：利用私有构造方法强制类不能被实例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
